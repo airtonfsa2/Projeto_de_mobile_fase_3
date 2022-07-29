@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Projeto de mobile fase 1</string>
+    <string name="entrar">Entrar</string>
+    <string name="cadastre_se">Cadastre-se</string>
+    <string name="estado">Estado:</string>
+    <string name="cpf">CPF:</string>
+</resources>

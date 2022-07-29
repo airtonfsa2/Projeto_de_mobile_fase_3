@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.projetodemobilefase1">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProjetoDeMobileFase1">
+        <activity
+            android:name=".AnimacaoDeCarregamento"
+            android:exported="false" />
+        <activity
+            android:name=".ExcluidoComSucesso"
+            android:exported="false" />
+        <activity
+            android:name=".DadosAlterados"
+            android:exported="false" />
+        <activity
+            android:name=".ExcluirLocalDeAtendimento"
+            android:exported="false" />
+        <activity
+            android:name=".EditarLocalAtendimento"
+            android:exported="false" />
+        <activity
+            android:name=".ListaLocalAtendimento"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroEfetuado"
+            android:exported="false" />
+        <activity
+            android:name=".CadastrarLocalDeAtendimento"
+            android:exported="false" />
+        <activity
+            android:name=".LocalDeAtendimento"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroVeterinario"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroPaciente"
+            android:exported="false" />
+        <activity
+            android:name=".ProcurarProfissional"
+            android:exported="false" />
+        <activity
+            android:name=".EsqueceuSenha"
+            android:exported="false" />
+        <activity
+            android:name=".Telaprincipalcliente"
+            android:exported="false" />
+        <activity
+            android:name=".Teladecadastro"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
