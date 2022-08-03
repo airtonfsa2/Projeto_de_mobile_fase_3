@@ -1,8 +1,13 @@
 package com.example.projetodemobilefase1;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
@@ -21,7 +26,6 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
     private static final String EMAIL_CLIENTE = "EmailCliente";
 
-    private static final String SENHA_CLIENTE = "SenhaCliente";
 
 
     //Criando a tabela de veterinario
@@ -51,12 +55,13 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CLIENTE_TABLE = "CREATE TABLE " + TABLE_CLIENTE + "("
+                + KEY_ID + "INTEGER PRIMARY KEY,"
                 + NOME_CLIENTE + " TEXT,"
-                + EMAIL_CLIENTE + " TEXT, "
-                + SENHA_CLIENTE + " VARCHAR(255)" + ")";
+                + EMAIL_CLIENTE + " TEXT" + ")";
 
         String CREATE_TABLE_VETERINARIO = "CREATE TABLE " + TABLE_VETERINARIO + "("
-                 + NOME_VET + " TEXT,"
+                + KEY_ID_VET + "INTEGER PRIMARY KEY,"
+                + NOME_VET + " TEXT,"
                 + EMAIL_VETERINARIO + " TEXT,"
                 + CRMV + "TEXT,"
                 + CELULAR_VET + "TEXT,"
@@ -69,7 +74,50 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
 
+
+    }
+
+    public void addCliente(Cliente cliente){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(NOME_CLIENTE, cliente.getNome());
+        values.put(EMAIL_CLIENTE, cliente.getEmail());
+
+        db.insert(TABLE_CLIENTE, null, values);
+        db.close();
+    }
+
+    void addVeterinario(Veterinario veterinario){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(NOME_VET, veterinario.getNome());
+        values.put(EMAIL_VETERINARIO, veterinario.getEmail());
+        values.put(CRMV, veterinario.getCrmv());
+        values.put(CELULAR_VET, veterinario.getTelefone());
+        values.put(CPF_VET, veterinario.getCpf());
+    }
+
+    public List<Cliente> getAllClientes(){
+        List<Cliente> clienteLista = new ArrayList<Cliente>();
+
+        String selecQuery =  "SELECT  * FROM " + TABLE_CLIENTE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selecQuery, null);
+
+        if (cursor.moveToFirst()){
+            do{
+                Cliente cliente = new Cliente();
+                cliente.setId(Integer.parseInt(cursor.getString( 0 )));
+                cliente.setNome(cursor.getString(2));
+                cliente.setEmail(cursor.getString(2));
+                clienteLista.add(cliente);
+            }while (cursor.moveToNext());
+        }
+        return clienteLista;
     }
 }

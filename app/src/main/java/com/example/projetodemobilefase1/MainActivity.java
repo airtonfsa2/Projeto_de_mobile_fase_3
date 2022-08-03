@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         Button button3 = findViewById(R.id.button3);
 
         button3.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent cadastro = new Intent(MainActivity.this, CadastroPaciente.class);
