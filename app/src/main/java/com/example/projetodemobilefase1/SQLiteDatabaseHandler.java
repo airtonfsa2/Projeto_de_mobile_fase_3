@@ -101,6 +101,14 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         values.put(CPF_VET, veterinario.getCpf());
     }
 
+    public String consulta(){
+        String querysel = "SELECT   * FROM" + TABLE_CLIENTE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        return querysel;
+    }
+
     public List<Cliente> getAllClientes(){
         List<Cliente> clienteLista = new ArrayList<Cliente>();
 

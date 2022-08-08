@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetoDeMobileFase1">
         <activity
+            android:name=".tela_consultar"
+            android:exported="false" />
+        <activity
             android:name=".AnimacaoDeCarregamento"
             android:exported="false" />
         <activity

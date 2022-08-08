@@ -3,6 +3,7 @@ package com.example.projetodemobilefase1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ public class CadastroPaciente extends AppCompatActivity {
     Button button6;
     EditText nomeEdit;
     EditText emailCliente;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class CadastroPaciente extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
+                Intent voltar =  new Intent(CadastroPaciente.this, MainActivity.class);
+                startActivity(voltar);
                 
 
 
